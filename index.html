@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineManíacos - Tu portal de películas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/cine.ico.jpg">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header id="header">
+        <div class="header-container">
+            <h1 class="logo">CineManíacos</h1>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Inicio</a></li>
+                    <li><a href="#about" class="nav-link">Sobre Nosotros</a></li>
+                    <li><a href="#movies" class="nav-link">Películas</a></li>
+                    <li><a href="#contact" class="nav-link">Contacto</a></li>
+                </ul>
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" title="Cambiar a modo claro">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sección Home-->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Bienvenido a CineManíacos</h2>
+            <p>Descubre las mejores películas y mantente actualizado con el mundo del cine</p>
+            <a href="#movies" class="btn">Explorar Películas</a>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <div class="about-content">
+                <p>CineManíacos es un portal creado por amantes del cine para amantes del cine. Nuestro objetivo es proporcionar información actualizada sobre las películas más populares, próximos estrenos y clásicos del cine.</p>
+                <p>Utilizamos la API de TheMovieDB para traerte información en tiempo real sobre el mundo del cine y para que estés actualizado día a día con las novedades y lo que vendrá en el mundo del cine.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Películas (API) -->
+    <section id="movies" class="section">
+        <div class="container">
+            <h2>Películas</h2>
+            <div class="search-container">
+                <input type="text" id="movie-search" placeholder="Buscar películas...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="popular">Populares</button>
+                <button class="filter-btn" data-filter="top_rated">Mejor Valoradas</button>
+                <button class="filter-btn" data-filter="upcoming">Próximamente</button>
+            </div>
+            <div id="movies-container" class="movies-grid"></div>
+            <div class="loader" id="loading"></div>
+            <button id="load-more" class="btn">Cargar Más</button>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto/Formulario -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>Suscríbete a nuestro newsletter para recibir las últimas novedades</p>
+            
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="ejemplo@dominio.com">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="movie-genre">Género favorito:</label>
+                    <select id="movie-genre" name="movie-genre">
+                        <option value="action">Acción</option>
+                        <option value="comedy">Comedia</option>
+                        <option value="drama">Drama</option>
+                        <option value="horror">Terror</option>
+                        <option value="scifi">Ciencia Ficción</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje (opcional):</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Suscribirse</button>
+            </form>
+            
+            <div id="form-success" class="success-message">
+                ¡Gracias por suscribirte! Te hemos enviado un correo de confirmación.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hecho con ❤️ por CineManíacos. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <i class="fab fa-x"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal para detalles de películas -->
+    <div id="movie-modal" class="movie-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-poster"></div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <div class="modal-meta">
+                        <span id="modal-year"></span>
+                        <span id="modal-runtime"></span>
+                        <span id="modal-rating"></span>
+                    </div>
+                    <p id="modal-overview"></p>
+                    <div class="modal-genres"></div>
+                    <a id="modal-imdb" class="btn imdb-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-imdb"></i> Ver en IMDB
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Volver Arriba -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
