@@ -15,12 +15,6 @@ Tu portal interactivo de cine que consume la API de TheMovieDB para ofrecerte la
 - 🔍 Búsqueda dinámica en tiempo real
 - ℹ️ Modal con detalles completos de cada película
 
-### 🖱️ Interacción Mejorada
-- 📝 Formulario con validación en tiempo real
-- ❤️ Funcionalidad de favoritos
-- ⭐ Sistema de calificación personalizado
-
----
 
 ## 🛠 Tecnologías Utilizadas
 
